@@ -43,7 +43,7 @@ while getopts "f:t:" opt; do
 			;;
 	        t) 
 
-# Utilizamos el 2>/dev/null para que si se ingresa un parametro distinto a un numero lo tire al stderror y se "borre" con el /dev/null, asi script sigue con el parametro por defecto sin tirar un codigo de error
+# Utilizamos el 2>/dev/null para que si se ingresa un parametro distinto a un numero lo tire al stderr y se "borre" con el /dev/null, asi script sigue con el parametro por defecto sin tirar un codigo de error
 
 	                if [ "$OPTARG" -gt 0 ] 2>/dev/null; then
 				N="$OPTARG"
@@ -62,8 +62,10 @@ while getopts "f:t:" opt; do
 shift $((OPTIND -1)) 
 log="$1"
 
-if [[ $# -lt 1 ]]; then
-echo "Error.Archivo no se ingreso archivo o no existe" >&2 
+# Verificacion de que se brinde el archivo, exista y tenga permisos de lectura, primero revisa la cantidad de argumentos brindados, luego si existe y por ultimo si tiene permisos de lectura. 
+
+if [[ $# -lt 1 || ! -e "$log" || ! -r "$log" ]]; then
+echo "Error, no se ingreso archivo, no existe o no tiene permisos de lectura" >&2 
 exit 1
 
 fi
