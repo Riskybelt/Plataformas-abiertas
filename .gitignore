@@ -1,0 +1,20 @@
+# Ignorar configuración de VSCode
+.vscode/
+*.code-workspace
+
+# Ignorar compilados y ejecutables de C
+*.o
+*.exe
+*.out
+*.obj
+
+# Ignorar carpetas de build o temporales
+build/
+
+# Ignorar todo por defecto
+*
+
+# Pero no ignorar archivos de C y cabeceras
+!*.c
+!*.h
+!.gitignore
