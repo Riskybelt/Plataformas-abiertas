@@ -20,7 +20,7 @@ int main() {
 ya que investigando me di cuenta que si no se agrega no generará numeros nuevos con cada
 ejecucion del programa, entonces es una forma facil de lograrlo*/
 
- srand(time(NULL));
+ srand((unsigned int) time(NULL));
 
  // Llenamos la matriz con números aleatorios del 1 al 9 para no tener numeros muy feos
 
@@ -57,12 +57,13 @@ for (int i = 0; i < Filas * Columnas; i++) {
             }
         }
     }
-printf ("\n");
+
 //Imprimimos el vector ya ordenado para verifica que se hizo correctamente
 
 for (int i = 0; i < Filas * Columnas; i++) {
         printf("%d ", *(ptrVector + i));
     }
+printf ("\n");
 
 //Volvemos a convertir el arreglo en una matriz ordenada de menor a mayor
 for (int i = 0; i < Filas * Columnas; i++) {
